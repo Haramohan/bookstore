@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bookstoreApp.book.home.title">Books</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-book" [routerLink]="['/book/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="bookstoreApp.book.home.createLabel">
+            Create a new Book
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="books?.length === 0">
+        <span jhiTranslate="bookstoreApp.book.home.notFound">No books found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="books?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.booktitle">Booktitle</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.text">Text</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.isbn">Isbn</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.publisher">Publisher</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.language">Language</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.pubyear">Pubyear</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.pages">Pages</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.price">Price</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.author">Author</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.status">Status</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.dateAdded">Date Added</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.dateModified">Date Modified</span></th>
+                    <th scope="col" ><span jhiTranslate="bookstoreApp.book.subjectName">Subject Name</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of books ;trackBy: trackId">
+                    <td><a [routerLink]="['/book', book.id, 'view']">{{ book.id }}</a></td>
+                    <td>{{ book.booktitle }}</td>
+                    <td>{{ book.text }}</td>
+                    <td>{{ book.isbn }}</td>
+                    <td>{{ book.publisher }}</td>
+                    <td jhiTranslate="{{ 'bookstoreApp.Lang.' + book.language }}">{{ book.language }}</td>
+                    <td>{{ book.pubyear }}</td>
+                    <td>{{ book.pages }}</td>
+                    <td>{{ book.price }}</td>
+                    <td>{{ book.author }}</td>
+                    <td jhiTranslate="{{ 'bookstoreApp.StatusFlag.' + book.status }}">{{ book.status }}</td>
+                    <td>{{ book.dateAdded | date:'mediumDate' }}</td>
+                    <td>{{ book.dateModified | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="book.subjectName">
+                            <a [routerLink]="['/subject', book.subjectName?.id, 'view']" >{{ book.subjectName?.subjectName }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/book', book.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/book', book.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(book)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

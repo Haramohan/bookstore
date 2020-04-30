@@ -1,0 +1,35 @@
+{
+  "bookstoreApp": {
+    "book": {
+      "home": {
+        "title": "Books",
+        "createLabel": "नया Book बनाएँ",
+        "createOrEditLabel": "Book बनाएँ या संपादित करें",
+        "notFound": "No Books found"
+      },
+      "created": "एक नया Book [identifier: {{ param }}] तैयार है",
+      "updated": "एक Book [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Book [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Book [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Book"
+      },
+      "booktitle": "Booktitle",
+      "text": "Text",
+      "isbn": "Isbn",
+      "publisher": "Publisher",
+      "language": "Language",
+      "pubyear": "Pubyear",
+      "pages": "Pages",
+      "price": "Price",
+      "author": "Author",
+      "status": "Status",
+      "dateAdded": "Date Added",
+      "dateModified": "Date Modified",
+      "isbn": "Isbn",
+      "subjectName": "Subject Name"
+    }
+  }
+}

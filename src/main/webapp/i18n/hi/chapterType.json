@@ -1,0 +1,9 @@
+{
+  "bookstoreApp": {
+    "ChapterType": {
+      "null": "",
+      "Free": "Free",
+      "Locked": "Locked"
+    }
+  }
+}

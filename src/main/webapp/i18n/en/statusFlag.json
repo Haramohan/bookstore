@@ -1,0 +1,9 @@
+{
+  "bookstoreApp": {
+    "StatusFlag": {
+      "null": "",
+      "Active": "Active",
+      "Inactive": "Inactive"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="chapter">
+            <h2><span jhiTranslate="bookstoreApp.chapter.detail.title">Chapter</span> {{ chapter.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bookstoreApp.chapter.chapterTitle">Chapter Title</span></dt>
+                <dd>
+                    <span>{{ chapter.chapterTitle }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.chapter.chapterNumber">Chapter Number</span></dt>
+                <dd>
+                    <span>{{ chapter.chapterNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.chapter.pages">Pages</span></dt>
+                <dd>
+                    <span>{{ chapter.pages }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.chapter.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'bookstoreApp.ChapterType.' + chapter.type }}">{{ chapter.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.chapter.order">Order</span></dt>
+                <dd>
+                    <span>{{ chapter.order }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.chapter.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'bookstoreApp.StatusFlag.' + chapter.status }}">{{ chapter.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.chapter.dateAdded">Date Added</span></dt>
+                <dd>
+                    <span>{{ chapter.dateAdded }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.chapter.dateModified">Date Modified</span></dt>
+                <dd>
+                    <span>{{ chapter.dateModified }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.chapter.bookISBN">Book ISBN</span></dt>
+                <dd>
+                    <div *ngIf="chapter.bookISBN">
+                        <a [routerLink]="['/book', chapter.bookISBN?.id, 'view']">{{ chapter.bookISBN?.isbn }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/chapter', chapter.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

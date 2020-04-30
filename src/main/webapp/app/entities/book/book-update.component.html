@@ -1,0 +1,197 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-book-heading" jhiTranslate="bookstoreApp.book.home.createOrEditLabel">Create or edit a Book</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.booktitle" for="field_booktitle">Booktitle</label>
+                    <input type="text" class="form-control" name="booktitle" id="field_booktitle"
+                           formControlName="booktitle"/>
+                    <div *ngIf="editForm.get('booktitle')!.invalid && (editForm.get('booktitle')!.dirty || editForm.get('booktitle')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('booktitle')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.text" for="field_text">Text</label>
+                    <input type="text" class="form-control" name="text" id="field_text"
+                           formControlName="text"/>
+                    <div *ngIf="editForm.get('text')!.invalid && (editForm.get('text')!.dirty || editForm.get('text')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('text')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.isbn" for="field_isbn">Isbn</label>
+                    <input type="text" class="form-control" name="isbn" id="field_isbn"
+                           formControlName="isbn"/>
+                    <div *ngIf="editForm.get('isbn')!.invalid && (editForm.get('isbn')!.dirty || editForm.get('isbn')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('isbn')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.publisher" for="field_publisher">Publisher</label>
+                    <input type="text" class="form-control" name="publisher" id="field_publisher"
+                           formControlName="publisher"/>
+                    <div *ngIf="editForm.get('publisher')!.invalid && (editForm.get('publisher')!.dirty || editForm.get('publisher')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('publisher')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.language" for="field_language">Language</label>
+                    <select class="form-control" name="language" formControlName="language" id="field_language">
+                        <option value="English">{{ 'bookstoreApp.Lang.English' | translate }}</option>
+                        <option value="Hindi">{{ 'bookstoreApp.Lang.Hindi' | translate }}</option>
+                        <option value="Odia">{{ 'bookstoreApp.Lang.Odia' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('language')!.invalid && (editForm.get('language')!.dirty || editForm.get('language')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('language')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.pubyear" for="field_pubyear">Pubyear</label>
+                    <input type="number" class="form-control" name="pubyear" id="field_pubyear"
+                           formControlName="pubyear"/>
+                    <div *ngIf="editForm.get('pubyear')!.invalid && (editForm.get('pubyear')!.dirty || editForm.get('pubyear')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('pubyear')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('pubyear')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.pages" for="field_pages">Pages</label>
+                    <input type="number" class="form-control" name="pages" id="field_pages"
+                           formControlName="pages"/>
+                    <div *ngIf="editForm.get('pages')!.invalid && (editForm.get('pages')!.dirty || editForm.get('pages')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('pages')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('pages')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.price" for="field_price">Price</label>
+                    <input type="number" class="form-control" name="price" id="field_price"
+                           formControlName="price"/>
+                    <div *ngIf="editForm.get('price')!.invalid && (editForm.get('price')!.dirty || editForm.get('price')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('price')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('price')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.author" for="field_author">Author</label>
+                    <input type="text" class="form-control" name="author" id="field_author"
+                           formControlName="author"/>
+                    <div *ngIf="editForm.get('author')!.invalid && (editForm.get('author')!.dirty || editForm.get('author')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('author')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="Active">{{ 'bookstoreApp.StatusFlag.Active' | translate }}</option>
+                        <option value="Inactive">{{ 'bookstoreApp.StatusFlag.Inactive' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('status')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.dateAdded" for="field_dateAdded">Date Added</label>
+                    <div class="input-group">
+                        <input id="field_dateAdded" type="text" class="form-control" name="dateAdded" ngbDatepicker #dateAddedDp="ngbDatepicker" formControlName="dateAdded"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateAddedDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.dateModified" for="field_dateModified">Date Modified</label>
+                    <div class="input-group">
+                        <input id="field_dateModified" type="text" class="form-control" name="dateModified" ngbDatepicker #dateModifiedDp="ngbDatepicker" formControlName="dateModified"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateModifiedDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookstoreApp.book.subjectName" for="field_subjectName">Subject Name</label>
+                    <select class="form-control" id="field_subjectName" name="subjectName" formControlName="subjectName">
+                        <option *ngIf="!editForm.get('subjectName')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="subjectOption.id === editForm.get('subjectName')!.value?.id ? editForm.get('subjectName')!.value : subjectOption" *ngFor="let subjectOption of subjects; trackBy: trackById">{{ subjectOption.subjectName }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('subjectName')!.invalid && (editForm.get('subjectName')!.dirty || editForm.get('subjectName')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('subjectName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

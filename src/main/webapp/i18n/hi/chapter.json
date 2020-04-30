@@ -1,0 +1,30 @@
+{
+  "bookstoreApp": {
+    "chapter": {
+      "home": {
+        "title": "Chapters",
+        "createLabel": "नया Chapter बनाएँ",
+        "createOrEditLabel": "Chapter बनाएँ या संपादित करें",
+        "notFound": "No Chapters found"
+      },
+      "created": "एक नया Chapter [identifier: {{ param }}] तैयार है",
+      "updated": "एक Chapter [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Chapter [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Chapter [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Chapter"
+      },
+      "chapterTitle": "Chapter Title",
+      "chapterNumber": "Chapter Number",
+      "pages": "Pages",
+      "type": "Type",
+      "order": "Order",
+      "status": "Status",
+      "dateAdded": "Date Added",
+      "dateModified": "Date Modified",
+      "bookISBN": "Book ISBN"
+    }
+  }
+}

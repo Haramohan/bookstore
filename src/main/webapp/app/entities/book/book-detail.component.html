@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="book">
+            <h2><span jhiTranslate="bookstoreApp.book.detail.title">Book</span> {{ book.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bookstoreApp.book.booktitle">Booktitle</span></dt>
+                <dd>
+                    <span>{{ book.booktitle }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.text">Text</span></dt>
+                <dd>
+                    <span>{{ book.text }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.isbn">Isbn</span></dt>
+                <dd>
+                    <span>{{ book.isbn }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.publisher">Publisher</span></dt>
+                <dd>
+                    <span>{{ book.publisher }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.language">Language</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'bookstoreApp.Lang.' + book.language }}">{{ book.language }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.pubyear">Pubyear</span></dt>
+                <dd>
+                    <span>{{ book.pubyear }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.pages">Pages</span></dt>
+                <dd>
+                    <span>{{ book.pages }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.price">Price</span></dt>
+                <dd>
+                    <span>{{ book.price }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.author">Author</span></dt>
+                <dd>
+                    <span>{{ book.author }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'bookstoreApp.StatusFlag.' + book.status }}">{{ book.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.dateAdded">Date Added</span></dt>
+                <dd>
+                    <span>{{ book.dateAdded }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.dateModified">Date Modified</span></dt>
+                <dd>
+                    <span>{{ book.dateModified }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookstoreApp.book.subjectName">Subject Name</span></dt>
+                <dd>
+                    <div *ngIf="book.subjectName">
+                        <a [routerLink]="['/subject', book.subjectName?.id, 'view']">{{ book.subjectName?.subjectName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/book', book.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
